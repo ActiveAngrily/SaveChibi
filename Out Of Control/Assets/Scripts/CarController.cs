@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarController : MonoBehaviour
 {
     Rigidbody2D rb;
-    float speed = 5f;
+    public float speed = 5f;
 
     private void Start()
     {

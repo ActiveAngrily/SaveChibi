@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameMaster : MonoBehaviour
 {
+    /*
     public int score = 0;
     public int closeCallMultiplier = 1;
 
@@ -25,11 +26,13 @@ public class GameMaster : MonoBehaviour
         }
         scoreUI.text =  score.ToString();
     }
-
+*/
     public void CloseCall()
     {
         //if the dog almost dodges the car, it will give extra points
-        score += 100 * closeCallMultiplier;
-        nextTime = Time.time + multiplierCancelTime;
+
+        //Dialogue("That was Close")
     }
+
+
 }
