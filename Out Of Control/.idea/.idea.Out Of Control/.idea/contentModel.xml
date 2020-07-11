@@ -10,9 +10,14 @@
           <e p="CarController.cs" t="Include" />
           <e p="CarSpawner.cs" t="Include" />
           <e p="CloseCall.cs" t="Include" />
+          <e p="DialogueSystem" t="Include">
+            <e p="Dialogue.cs" t="Include" />
+            <e p="DialogueController.cs" t="Include" />
+          </e>
           <e p="DogController.cs" t="Include" />
+          <e p="DragAndDrop.cs" t="Include" />
           <e p="GameMaster.cs" t="Include" />
-          <e p="UIText.cs" t="Include" />
+          <e p="MouseController.cs" t="Include" />
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />

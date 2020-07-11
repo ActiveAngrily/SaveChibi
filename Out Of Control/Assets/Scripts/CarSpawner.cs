@@ -9,6 +9,8 @@ public class CarSpawner : MonoBehaviour
 
     public Transform[] spawnPoints;
 
+    public bool canDragCarSpawn;
+
     void Update() {
         if (_nextTimeToSpawn <= Time.time) {
             SpawnCar();
@@ -20,6 +22,21 @@ public class CarSpawner : MonoBehaviour
         var randomIndex = Random.Range(0, spawnPoints.Length);
         var spawnPoint = spawnPoints[randomIndex];
         
-        Instantiate(car, spawnPoint.position, spawnPoint.rotation);
+        var carSpawn = Instantiate(car, spawnPoint.position, spawnPoint.rotation);
+        carSpawn.GetComponent<DragAndDrop>().activated = canDragCarSpawn;
+    }
+
+    public void CarDragOn() {
+        canDragCarSpawn = true;
+        foreach (var carObject in GameObject.FindGameObjectsWithTag("Car")) {
+            car.GetComponent<DragAndDrop>().activated = true;
+        }
+    }
+    
+    public void CarDragOff() {
+        canDragCarSpawn = false;
+        foreach (var carObject in GameObject.FindGameObjectsWithTag("Car")) {
+            car.GetComponent<DragAndDrop>().activated = false;
+        }
     }
 }

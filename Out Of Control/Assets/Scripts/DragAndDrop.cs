@@ -3,7 +3,7 @@
 public class DragAndDrop : MonoBehaviour 
 {
     public bool activated;
-    public bool isDragging;
+    private bool isDragging;
     
     private void OnMouseDown() 
     {
@@ -27,6 +27,24 @@ public class DragAndDrop : MonoBehaviour
         if (isDragging) {
             Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
             transform.Translate(mousePosition);
+
+            if (transform.position.x >= 4.7F) {
+                isDragging = false;
+                transform.position = new Vector2(4.69F, transform.position.y);
+            }
+            if (transform.position.x <= -4.7F) {
+                isDragging = false;
+                transform.position = new Vector2(-4.69F, transform.position.y);
+            }
+            if (transform.position.y >= 4.7F) {
+                isDragging = false;
+                transform.position = new Vector2(transform.position.x, 4.69F);
+            }
+            if (transform.position.y <= -4.7F) {
+                isDragging = false;
+                transform.position = new Vector2(transform.position.x, -4.69F);
+            }
+            
         }
     }
 }

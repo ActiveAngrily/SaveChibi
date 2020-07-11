@@ -131,6 +131,7 @@ GameObject:
   m_Component:
   - component: {fileID: 58212545}
   - component: {fileID: 58212546}
+  - component: {fileID: 58212547}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -164,9 +165,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d14f0d4b49aa5242a96be3cf3286abe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  score: 10
-  closeCallMultiplier: 1
-  scoreUI: {fileID: 2128023027}
+--- !u!114 &58212547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 58212544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e779e780c733df44ae5c408225dbfeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dog: {fileID: 578636984}
+  carSpawner: {fileID: 897937617}
 --- !u!1 &123770234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1001,6 +1013,7 @@ GameObject:
   - component: {fileID: 578636987}
   - component: {fileID: 578636989}
   - component: {fileID: 578636988}
+  - component: {fileID: 578636990}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -1134,6 +1147,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   smoothStartMotion: 2
+--- !u!114 &578636990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 578636984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74c693c90d11dbe43bb47d3084f74aa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  activated: 0
 --- !u!1 &670609962
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,12 +1353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f6210959d568b468e304249d2a39c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelNumberText: {fileID: 2128023027}
-  arrowImages:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &862245434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1524,7 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b61aa0c885daa4d8217d3a8895da5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 1
+  spawnRate: 5
   car: {fileID: 4362673636333342396, guid: a4ca7d098f01c274397790d5af80e86e, type: 3}
   spawnPoints:
   - {fileID: 1851758861}
@@ -1533,6 +1553,7 @@ MonoBehaviour:
   - {fileID: 1600121032}
   - {fileID: 1521590188}
   - {fileID: 282403384}
+  canDragCarSpawn: 0
 --- !u!4 &897937619
 Transform:
   m_ObjectHideFlags: 0
