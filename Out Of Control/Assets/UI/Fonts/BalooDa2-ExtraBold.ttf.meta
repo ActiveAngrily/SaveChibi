@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 167743e9b71e2d34f82f942577100883
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Baloo Da 2
+  fontNames:
+  - Baloo Da 2
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 30e94f79e58e90645b87be6934d1c6ec, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
