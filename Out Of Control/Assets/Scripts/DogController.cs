@@ -17,6 +17,8 @@ public class DogController : MonoBehaviour
     //private UIText _uiText;
     //[SerializeField] private Transform startTransform;
 
+    public bool randomizeDirection = false;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -26,6 +28,10 @@ public class DogController : MonoBehaviour
     private void Update()
     {
         Movement();
+        if(randomizeDirection)
+        {
+            ShuffleDirection(directionIndex);
+        }
     }
 
     private void Movement()
