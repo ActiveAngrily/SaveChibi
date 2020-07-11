@@ -37,10 +37,12 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\CarController.cs" />
+     <Compile Include="Assets\Scripts\CarSpawner.cs" />
      <Compile Include="Assets\Scripts\CloseCall.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\Dialogue.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialogueController.cs" />
      <Compile Include="Assets\Scripts\DogController.cs" />
+     <Compile Include="Assets\Scripts\DragAndDrop.cs" />
      <Compile Include="Assets\Scripts\GameMaster.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
