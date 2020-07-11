@@ -465,7 +465,7 @@ RectTransform:
   m_GameObject: {fileID: 383097229}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1242050436}
   m_Father: {fileID: 386141762}
@@ -473,7 +473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 186.24}
+  m_AnchoredPosition: {x: 0, y: -179}
   m_SizeDelta: {x: 508.2437, y: 127.51096}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &383097232
@@ -489,8 +489,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueText: {fileID: 1242050437}
+  waitTime: 4
+  allDialogsDone: 0
   dialogue: {fileID: 1848119161}
-  waitTime: 7
+  pt1: {fileID: 1848119161}
+  pt2: {fileID: 1016667876}
+  pt3: {fileID: 768728851}
+  pt4: {fileID: 1882432300}
 --- !u!114 &383097233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,6 +660,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1848119160}
+  - {fileID: 1016667875}
+  - {fileID: 768728850}
+  - {fileID: 1882432299}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -926,7 +934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 606047568}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.1799998, y: 2.7950048, z: 3.260547}
+  m_LocalPosition: {x: -3.02, y: 2.75, z: 3.260547}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1545293466}
@@ -1007,8 +1015,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706314477}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0.187, y: 4.97, z: 3.260547}
-  m_LocalScale: {x: 0.5475331, y: 0.36984047, z: 0.3698405}
+  m_LocalPosition: {x: -0.735, y: 4.97, z: 3.260547}
+  m_LocalScale: {x: 0.688903, y: 0.36984047, z: 0.3698405}
   m_Children: []
   m_Father: {fileID: 1545293466}
   m_RootOrder: 8
@@ -1063,6 +1071,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &768728849
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 768728850}
+  - component: {fileID: 768728851}
+  m_Layer: 0
+  m_Name: Dialog (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &768728850
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768728849}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 398733977}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &768728851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768728849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5d98046f316404a82c8b6628814a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sentences:
+  - 'Welcome to my world user. I am the developer of this game. '
+  - "How is the world, beautiful isn\u2019t it. From the hardness of the concrete
+    to the lushful grasses."
+  - 'Everything just ties the whole place toget-What is that, is that a dog? '
+  - "I didn\u2019t add a dog. How did It get there? You know what, it doesn\u2019t
+    matter, I\u2019ll remove it."
 --- !u!1 &862245434
 GameObject:
   m_ObjectHideFlags: 0
@@ -1259,8 +1317,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 907103533}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.187, y: -1.3249952, z: 3.260547}
-  m_LocalScale: {x: 0.5475331, y: 0.36984047, z: 0.3698405}
+  m_LocalPosition: {x: 0.289, y: -1.3249952, z: 3.260547}
+  m_LocalScale: {x: 0.62758607, y: 0.36984047, z: 0.3698405}
   m_Children: []
   m_Father: {fileID: 1545293466}
   m_RootOrder: 4
@@ -1315,6 +1373,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1016667874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1016667875}
+  - component: {fileID: 1016667876}
+  m_Layer: 0
+  m_Name: Dialog (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1016667875
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016667874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 398733977}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1016667876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016667874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5d98046f316404a82c8b6628814a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sentences:
+  - 'Welcome to my world user. I am the developer of this game. '
+  - "How is the world, beautiful isn\u2019t it. From the hardness of the concrete
+    to the lushful grasses."
+  - 'Everything just ties the whole place toget-What is that, is that a dog? '
+  - "I didn\u2019t add a dog. How did It get there? You know what, it doesn\u2019t
+    matter, I\u2019ll remove it."
 --- !u!1 &1190172125
 GameObject:
   m_ObjectHideFlags: 0
@@ -1704,7 +1812,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 53eb23253f5ae0c4bbba3c837b98aae3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1815,7 +1923,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: c94febbaa5dcf7843a7046b3b1020672, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1874,9 +1982,9 @@ MonoBehaviour:
   - 'Welcome to my world user. I am the developer of this game. '
   - "How is the world, beautiful isn\u2019t it. From the hardness of the concrete
     to the lushful grasses."
-  - "Everything just ties the whole place toget\u2013 What is that, is that a dog? "
+  - 'Everything just ties the whole place toget-What is that, is that a dog? '
   - "I didn\u2019t add a dog. How did It get there? You know what, it doesn\u2019t
-    matter, I\u2019ll kill it"
+    matter, I\u2019ll remove it."
 --- !u!1 &1851758860
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,6 +2015,56 @@ Transform:
   m_Father: {fileID: 897937619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1882432298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1882432299}
+  - component: {fileID: 1882432300}
+  m_Layer: 0
+  m_Name: Dialog (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1882432299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882432298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 398733977}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1882432300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882432298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5d98046f316404a82c8b6628814a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sentences:
+  - 'Welcome to my world user. I am the developer of this game. '
+  - "How is the world, beautiful isn\u2019t it. From the hardness of the concrete
+    to the lushful grasses."
+  - 'Everything just ties the whole place toget-What is that, is that a dog? '
+  - "I didn\u2019t add a dog. How did It get there? You know what, it doesn\u2019t
+    matter, I\u2019ll remove it."
 --- !u!1 &2043103933
 GameObject:
   m_ObjectHideFlags: 0

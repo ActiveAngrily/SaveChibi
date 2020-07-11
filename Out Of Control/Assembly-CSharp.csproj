@@ -38,7 +38,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CarController.cs" />
      <Compile Include="Assets\Scripts\CarSpawner.cs" />
-     <Compile Include="Assets\Scripts\CloseCall.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\Dialogue.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialogueController.cs" />
      <Compile Include="Assets\Scripts\DogController.cs" />

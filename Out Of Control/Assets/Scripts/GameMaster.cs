@@ -1,27 +1,168 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
+    CarSpawner cs;
+
+
+    float p1waitTime = 40f;
+
+    float nextTime = 0f;
+    
+
+    private void Start()
+    {
+        cs = FindObjectOfType<CarSpawner>();
+        cs.gameObject.SetActive(false);
+    }
 
     private void Update()
     {
-
+        if(nextTime > 0  && Time.time >= nextTime)
+        {
+            cs.gameObject.SetActive(false);
+            nextTime = 0f;
+        }   
     }
 
-    private void DialogueTimer()
+    public void p1()
     {
-        
+        cs.gameObject.SetActive(true);
+        //play animations
+        nextTime = Time.time + p1waitTime;
     }
+    /*
+    Element 1 - Normal Controls
+    Element 2 - Randomized Controls
+    Element 3 - Drag and Drop the dog
+    Element 4 - Drag and Drop the Cars
 
-    public void CloseCall()
+    // THE END
+    */
+    /*
+    CarSpawner cs;
+    DogController dc;
+    DialogueController diac;
+
+    public Dialogue pt1;
+    public Dialogue pt2;
+    public Dialogue pt3;
+    public Dialogue pt4;
+
+    float nextTime = 0f;
+    public float[] SpawnTime = { 30f, 30f,
+                                    30f, 30f };
+
+
+    public bool timeelapsed = false;
+    private bool initializing = false;
+
+    private void Start()
     {
-        //if the dog almost dodges the car, it will give extra points
+        dc = FindObjectOfType<DogController>();
+        cs = FindObjectOfType<CarSpawner>();
+        diac = FindObjectOfType<DialogueController>();
 
-        //Dialogue("That was Close")
+        cs.gameObject.SetActive(false);
+
+        Init();
     }
 
+    private void Update()
+    {
+        //For Part 1
 
+        if (initializing)
+        {
+            if (Time.time >= nextTime)
+            {
+                cs.gameObject.SetActive(false);
+                timeelapsed = true;
+            }
+        }
+    }
+    public void Init()
+    {
+        Part1();
+    }
+    public void Part1()
+    {
+        // Run Dialog Box
+        diac.dialogue = pt1;
+        diac.StartDialogue();
+        // Start Car Spawner after all the dialog is spoken
+        if (diac.allDialogsDone)
+        {
+            cs.gameObject.SetActive(true);
+            nextTime = Time.time + SpawnTime[0];
+            initializing = true;
+            if (timeelapsed)
+            {
+                cs.gameObject.SetActive(false);
+                initializing = false;
+                Part2();
+                return;
+            }
+        }
+    }
+    public void Part2()
+    {
+        diac.dialogue = pt2;
+        diac.StartDialogue();
+
+        if (diac.allDialogsDone)
+        {
+            cs.gameObject.SetActive(true);
+            nextTime = Time.time + SpawnTime[1];
+            initializing = true;
+            if (timeelapsed)
+            {
+                cs.gameObject.SetActive(false);
+                initializing = false;
+                Part3();
+                return;
+            }
+        }
+    }
+    public void Part3()
+    {
+        diac.dialogue = pt3;
+        diac.StartDialogue();
+
+        if (diac.allDialogsDone)
+        {
+            cs.gameObject.SetActive(true);
+            nextTime = Time.time + SpawnTime[2];
+            initializing = true;
+
+            if (timeelapsed)
+            {
+                cs.gameObject.SetActive(false);
+                initializing = false;
+                Part4();
+                return;
+            }
+        }
+    }
+
+    public void Part4()
+    {
+
+        diac.dialogue = pt4;
+        diac.StartDialogue();
+        if (diac.allDialogsDone)
+        {
+            cs.gameObject.SetActive(true);
+            nextTime = Time.time + SpawnTime[3];
+            initializing = true;
+
+            if (timeelapsed)
+            {
+                cs.gameObject.SetActive(false);
+                initializing = false;
+                Part4();
+                return;
+            }
+        }
+    }*/
 }

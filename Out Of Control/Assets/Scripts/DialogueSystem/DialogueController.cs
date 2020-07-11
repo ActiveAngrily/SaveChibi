@@ -6,18 +6,28 @@ using UnityEngine.UI;
 public class DialogueController : MonoBehaviour
 {
 
+    GameMaster gm;
     public Text dialogueText;
 
     private Queue<string> sentences;
 
-    public Dialogue dialogue;
 
     float nextTime = 0f;
     public float waitTime = 5f;
+    public bool allDialogsDone = false;
+
+    public Dialogue dialogue;
+    public Dialogue pt1;
+    public Dialogue pt2;
+    public Dialogue pt3;
+    public Dialogue pt4;
+
+
     void Start()
     {
+        gm = FindObjectOfType<GameMaster>();
         sentences = new Queue<string>();
-        StartDialogue(dialogue);
+        StartDialogue(pt1);    
     }
 
     private void Update()
@@ -26,11 +36,19 @@ public class DialogueController : MonoBehaviour
         {
             NextSentence();
             nextTime = Time.time + waitTime;
-            
+        }
+        if(allDialogsDone)
+        {
+            gm.p1();
+
+            // start p2
+            allDialogsDone = !allDialogsDone;   
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+
+
+    public void StartDialogue(Dialogue dialogues)
     {
 
         sentences.Clear();
@@ -47,7 +65,11 @@ public class DialogueController : MonoBehaviour
 
     public void NextSentence()
     {
-        if (sentences.Count == 0) return;
+        if (sentences.Count == 0)
+        {
+            allDialogsDone = true;
+            return;
+        }
 
         string sentence = sentences.Dequeue();
         StopAllCoroutines();
