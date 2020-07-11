@@ -69,7 +69,7 @@ public class DogController : MonoBehaviour
     public void ShuffleDirection<Obj>(Obj[] dir)
     {
         int n = dir.Length;
-        //Fisheer-Yates Shuffling Algorithm
+        //Fisher-Yates Shuffling Algorithm
         for (int i = 0; i < n - 1; i++)
         {
             int j = Random.Range(i, n);
