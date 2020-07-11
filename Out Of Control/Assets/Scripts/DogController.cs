@@ -5,6 +5,7 @@ using System.Collections.Generic;
 public class DogController : MonoBehaviour
 {
     Rigidbody2D rb;
+    Animator an;
 
     private Vector2[] direction = { Vector2.up, Vector2.down, Vector2.left, Vector2.right }; //GameMaster Object will randomize the direction after every wave
     // order of direction - [UP,DOWN,LEFT,RIGHT]
@@ -22,6 +23,7 @@ public class DogController : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        an = GetComponent<Animator>();
         // _uiText = FindObjectOfType<UIText>();
     }
 
@@ -65,11 +67,28 @@ public class DogController : MonoBehaviour
         if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
         {
             rb.velocity = Vector2.zero;
+            RemoveAnims();
         }
     }
     private void Move(Vector2 direction, float speed)
     {
-        rb.velocity = direction * speed;
+        rb.velocity = direction * speed; ;
+        if (direction == Vector2.up) Animate("WalkUp");
+        if (direction == Vector2.down) Animate("WalkDown");
+        if (direction == Vector2.right) Animate("WalkRight");
+        if (direction == Vector2.left) Animate("WalkLeft");
+    }
+
+    private void Animate(string animParam) {
+        RemoveAnims();
+        an.SetBool(animParam, true);
+    }
+
+    private void RemoveAnims() {
+        an.SetBool("WalkUp", false);
+        an.SetBool("WalkDown", false);
+        an.SetBool("WalkLeft", false);
+        an.SetBool("WalkRight", false);
     }
 
     public void ShuffleDirection<Obj>(Obj[] dir)
