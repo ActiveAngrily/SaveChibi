@@ -1,47 +1,77 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
-public class Dog : MonoBehaviour {
-    private Rigidbody2D _rb;
-    [SerializeField] private float moveSpeed = 0.01f;
-    [SerializeField] private GameObject startPosition;
-    private UIText _uiText;
-    public Vector2[] directionVectors = {Vector2.up, Vector2.right, Vector2.down, Vector2.left};
+public class Dog : MonoBehaviour
+{
+    Rigidbody2D rb;
 
-    private void Awake() {
-        _rb = GetComponent<Rigidbody2D>();
-        _uiText = FindObjectOfType<UIText>();
+    private Vector2[] direction = { Vector2.up, Vector2.down, Vector2.left, Vector2.right }; //GameMaster Object will randomize the direction after every wave
+    // order of direction - [UP,DOWN,LEFT,RIGHT]
+    private int[] directionIndex = { 0, 1, 2, 3 };
+    public float speed;
+    //private UIText _uiText;
+    //[SerializeField] private Transform startTransform;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        // _uiText = FindObjectOfType<UIText>();
     }
 
-    void RotateControls() {
-        var temp = directionVectors[0];
-        for (var i = 0; i < directionVectors.Length - 1; i++) {
-            directionVectors[i] = directionVectors[i + 1];
-        }
-        directionVectors[directionVectors.Length - 1] = temp;
+    private void Update()
+    {
+        Movement();
     }
 
-    void NextLevel() {
-        RotateControls();
-        transform.position = startPosition.transform.position;
-        _uiText.IncrementLevel();
-        _uiText.RefreshControlPanel(directionVectors);
+    private void Movement()
+    {
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+        {
+            float inputMotion = Mathf.Clamp(Input.GetAxis("Vertical") * 2f, 0f, 1f);
+            //direction[0]
+            Move(direction[directionIndex[0]], inputMotion * speed);
+
+        }
+        if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+        {
+            float inputMotion = Mathf.Clamp(Input.GetAxis("Vertical") * -2f, 0f, 1f);
+            //direction[1]
+            Move(direction[directionIndex[1]], inputMotion * speed);
+        }
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+        {
+            float inputMotion = Mathf.Clamp(Input.GetAxis("Horizontal") * -2f, 0f, 1f);
+            //direction[2]
+            Move(direction[directionIndex[2]], inputMotion * speed);
+        }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+        {
+            float inputMotion = Mathf.Clamp(Input.GetAxis("Horizontal") * 2f, 0f, 1f);
+
+            //direction[3]
+            Move(direction[directionIndex[3]], inputMotion * speed);
+        }
+        if (Input.GetAxisRaw("Vertical") == 0 && Input.GetAxisRaw("Horizontal") == 0)
+        {
+            rb.velocity = Vector2.zero;
+        }
     }
-    
-    void Update() {
-        if (Input.GetKey(KeyCode.UpArrow)) {
-            _rb.MovePosition(_rb.position + (directionVectors[0] * moveSpeed));
+    private void Move(Vector2 direction, float speed)
+    {
+        rb.velocity = direction * speed;
+    }
+
+    public void ShuffleDirection<Obj>(Obj[] dir)
+    {
+        int n = dir.Length;
+        //Fisheer-Yates Shuffling Algorithm
+        for (int i = 0; i < n - 1; i++)
+        {
+            int j = Random.Range(i, n);
+            Obj temp = dir[i];
+            dir[i] = dir[j];
+            dir[j] = temp;
         }
-        if (Input.GetKey(KeyCode.RightArrow)) {
-            _rb.MovePosition(_rb.position + (directionVectors[1] * moveSpeed));
-        }
-        if (Input.GetKey(KeyCode.DownArrow)) {
-            _rb.MovePosition(_rb.position + (directionVectors[2] * moveSpeed));
-        }
-        if (Input.GetKey(KeyCode.LeftArrow)) {
-            _rb.MovePosition(_rb.position + (directionVectors[3] * moveSpeed));
-        }
-        
-        // if reached other side of road
-        if (transform.position.y >= 5) NextLevel();
     }
 }
