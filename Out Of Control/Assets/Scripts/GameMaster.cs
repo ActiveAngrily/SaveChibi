@@ -239,14 +239,24 @@ public class GameMaster : MonoBehaviour
 
     public Part1Dialog p1D;
     public Part2Dialog p2D;
-    
-    private void Update()
+
+    private void Start()
     {
         p1D.gameObject.SetActive(true);
-        if(p1D.CodeFinished)
+    }
+    void Update()
+    {
+        if (p1D.CodeFinished)
         {
             p1D.gameObject.SetActive(false);
+
+            p2D.gameObject.SetActive(true);
+
+            // add a screen shake here
+        }
+        if (p2D.CodeFinished)
+        {
+            p2D.gameObject.SetActive(false);
         }
     }
-
 }

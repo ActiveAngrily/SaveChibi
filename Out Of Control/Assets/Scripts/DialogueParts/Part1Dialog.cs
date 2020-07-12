@@ -11,17 +11,13 @@ public class Part1Dialog : MonoBehaviour
     DogController dc;
     CarSpawner cs;
 
-    bool dialogueRunning = false;
-    bool dialogueFinished = false;
+    public bool dialogueRunning = false;
+    public bool dialogueFinished = false;
     public bool CodeFinished = false;
 
     float nextTime = 0f;
     public float spawnerRuntime = 5f;
-    void Start()
-    {
-
-    }
-
+    
     void Awake()
     {
         diac = FindObjectOfType<DialogueController>();
@@ -41,9 +37,17 @@ public class Part1Dialog : MonoBehaviour
         }
 
     }
+    bool oneRun = false;
     void Update()
     {
-        if(diac.allDialogsDone) dialogueFinished = true;
+        if (diac.allDialogsDone)
+        {
+            if (!oneRun)
+            {
+                dialogueFinished = true;
+                oneRun = true;
+            }
+        }
         if (dialogueFinished)
         {
             // enter post dialogue code here
@@ -57,7 +61,6 @@ public class Part1Dialog : MonoBehaviour
         }
         if (nextTime > 0 && Time.time > nextTime)
         {
-            Debug.Log("Test");
             cs.gameObject.SetActive(false);
             CodeFinished = true;
 

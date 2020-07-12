@@ -11,45 +11,58 @@ public class Part2Dialog : MonoBehaviour
     DogController dc;
     CarSpawner cs;
 
-    bool dialogueRunning = false;
-    bool dialogueFinished = false;
+    public bool dialogueRunning = false;
+    public bool dialogueFinished = false;
     public bool CodeFinished = false;
-    void Start()
+
+    float nextTime = 0f;
+    public float spawnerRuntime = 5f;
+
+    void Awake()
     {
         diac = FindObjectOfType<DialogueController>();
         d = GetComponent<Dialogue>();
         dc = FindObjectOfType<DogController>();
         cs = FindObjectOfType<CarSpawner>();
-    }
 
-    void Update()
-    {
+        cs.gameObject.SetActive(false);
+
         if (!dialogueRunning)
         {
             // enter pre dialog code here
-            dc.controlsOn =false;
+            dc.controlsOn = false;
             diac.StartDialogue(d);
             dialogueRunning = true;
             cs.gameObject.SetActive(false);
         }
-        if(diac.allDialogsDone)
+    }
+    bool oneRun = false;
+    void Update()
+    {
+        if (diac.allDialogsDone)
         {
-            dc.controlsOn = false;
-            dialogueFinished = true;
-            dialogueRunning = false;
-            cs.gameObject.SetActive(false);
+            if (!oneRun)
+            {
+                dialogueFinished = true;
+                oneRun = true;
+            }
         }
-
-        if(dialogueFinished)
+        if (dialogueFinished)
         {
             // enter post dialogue code here
-            dc.randomizeDirection = true;
             dc.controlsOn = true;
-            
-            cs.gameObject.SetActive(false);
+            dc.randomizeDirection = true;
+            cs.gameObject.SetActive(true);
+            nextTime = Time.time + spawnerRuntime;
+
             // end post dialog code
-            CodeFinished = true;
             dialogueFinished = false;
+        }
+        if (nextTime > 0 && Time.time > nextTime)
+        {
+            cs.gameObject.SetActive(false);
+            CodeFinished = true;
+
         }
     }
 }
