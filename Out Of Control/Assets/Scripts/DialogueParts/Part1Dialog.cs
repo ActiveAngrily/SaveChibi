@@ -25,7 +25,6 @@ public class Part1Dialog : MonoBehaviour
         dc = FindObjectOfType<DogController>();
         cs = FindObjectOfType<CarSpawner>();
 
-        cs.gameObject.SetActive(false);
 
         if (!dialogueRunning)
         {

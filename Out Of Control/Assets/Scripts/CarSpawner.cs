@@ -72,6 +72,7 @@ public class CarSpawner : MonoBehaviour
             
             var carSpawn = Instantiate(car, spawnPoint.position, spawnPoint.rotation);
             carSpawn.GetComponent<DragAndDrop>().activated = canDragCarSpawn;
+            carSpawn.GetComponent<SpriteRenderer>().sortingOrder = 3 +  randomIndex;
         }
     }
 

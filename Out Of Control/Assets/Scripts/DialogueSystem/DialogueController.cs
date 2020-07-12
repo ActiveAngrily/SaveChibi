@@ -29,7 +29,7 @@ public class DialogueController : MonoBehaviour
         bool p3 = false;
         bool p4 = false;
     */
-    void Start()
+    void Awake()
     {
         gm = FindObjectOfType<GameMaster>();
         sentences = new Queue<string>();

@@ -248,6 +248,7 @@ public class GameMaster : MonoBehaviour
     {
         if (p1D.CodeFinished)
         {
+            Debug.Log("Test");
             p1D.gameObject.SetActive(false);
 
             p2D.gameObject.SetActive(true);
