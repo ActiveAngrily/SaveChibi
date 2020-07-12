@@ -29,7 +29,6 @@ public class DialogueController : MonoBehaviour
         bool p3 = false;
         bool p4 = false;
     */
-
     void Start()
     {
         gm = FindObjectOfType<GameMaster>();
@@ -136,6 +135,7 @@ public class DialogueController : MonoBehaviour
     }
     private IEnumerator TypeSentence(string sentence)
     {
+
         dialogueText.text = "";
 
         foreach (char letter in sentence.ToCharArray())
