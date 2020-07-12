@@ -1,18 +1,23 @@
 ﻿using UnityEngine;
+using System.Collections;
+
 
 public class GameMaster : MonoBehaviour
 {
     CarSpawner cs;
+    DogController dc;
 
-
-    float p1waitTime = 40f;
+    public float p1waitTime = 5f;
 
     float nextTime = 0f;
     
+    public bool _p1 = false;
 
     private void Start()
     {
+        dc = FindObjectOfType<DogController>();
         cs = FindObjectOfType<CarSpawner>();
+
         cs.gameObject.SetActive(false);
     }
 
@@ -20,16 +25,19 @@ public class GameMaster : MonoBehaviour
     {
         if(nextTime > 0  && Time.time >= nextTime)
         {
+            Debug.Log("Running Script");
             cs.gameObject.SetActive(false);
+            _p1 = true;
             nextTime = 0f;
         }   
     }
-
-    public void p1()
+    public IEnumerator p1()
     {
+        dc.controlsOn = true;
         cs.gameObject.SetActive(true);
         //play animations
         nextTime = Time.time + p1waitTime;
+        yield return null;
     }
     /*
     Element 1 - Normal Controls

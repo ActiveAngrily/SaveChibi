@@ -27,7 +27,7 @@ public class DialogueController : MonoBehaviour
     {
         gm = FindObjectOfType<GameMaster>();
         sentences = new Queue<string>();
-        StartDialogue(pt1);    
+        StartDialogue(pt1);
     }
 
     private void Update()
@@ -37,12 +37,20 @@ public class DialogueController : MonoBehaviour
             NextSentence();
             nextTime = Time.time + waitTime;
         }
-        if(allDialogsDone)
+        if (allDialogsDone)
         {
-            gm.p1();
+            Debug.Log("Got Here");
+            StartCoroutine(gm.p1());
 
-            // start p2
-            allDialogsDone = !allDialogsDone;   
+            bool p1 = gm._p1;
+
+            if (p1)
+            {
+                // start p2
+                StartDialogue(pt2);
+            }
+
+            allDialogsDone = !allDialogsDone;
         }
     }
 
