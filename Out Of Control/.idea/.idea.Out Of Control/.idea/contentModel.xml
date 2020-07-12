@@ -6,13 +6,15 @@
     <e p="D:\Unity\GameJam\Out Of Control" t="IncludeRecursive">
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
-        <e p="controlBar.cs" t="Include" />
         <e p="Scripts" t="Include">
           <e p="CarController.cs" t="Include" />
           <e p="CarSpawner.cs" t="Include" />
+          <e p="controlBar.cs" t="Include" />
           <e p="DialogueParts" t="Include">
             <e p="Part1Dialog.cs" t="Include" />
             <e p="Part2Dialog.cs" t="Include" />
+            <e p="Part3Dialog.cs" t="Include" />
+            <e p="Part4Dialog.cs" t="Include" />
           </e>
           <e p="DialogueSystem" t="Include">
             <e p="Dialogue.cs" t="Include" />

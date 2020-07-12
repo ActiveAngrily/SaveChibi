@@ -31,6 +31,7 @@ public class DragAndDrop : MonoBehaviour
             if(activated)
             {
                 isDragging = false;
+                if (gameObject.tag == "Dog") GetComponent<DogController>().RemoveAnims();
             }
         }
 
@@ -46,20 +47,30 @@ public class DragAndDrop : MonoBehaviour
             if (transform.position.x >= 4.7F) {
                 isDragging = false;
                 transform.position = new Vector2(4.69F, transform.position.y);
+                if (gameObject.tag == "Dog") GetComponent<DogController>().RemoveAnims();
             }
             if (transform.position.x <= -4.7F) {
                 isDragging = false;
                 transform.position = new Vector2(-4.69F, transform.position.y);
+                if (gameObject.tag == "Dog") GetComponent<DogController>().RemoveAnims();
             }
             if (transform.position.y >= 4.7F) {
                 isDragging = false;
                 transform.position = new Vector2(transform.position.x, 4.69F);
+                if (gameObject.tag == "Dog") GetComponent<DogController>().RemoveAnims();
             }
             if (transform.position.y <= -4.7F) {
                 isDragging = false;
                 transform.position = new Vector2(transform.position.x, -4.69F);
+                if (gameObject.tag == "Dog") GetComponent<DogController>().RemoveAnims();
             }
             
         }
+        
+        if (gameObject.tag == "Dog") {
+            if (isDragging) GetComponent<DogController>().Animate("Drag");
+            else GetComponent<DogController>().RemoveAnims();
+        }
+        
     }
 }
