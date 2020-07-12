@@ -26,7 +26,7 @@ public class Part2Dialog : MonoBehaviour
         cs = FindObjectOfType<CarSpawner>();
 
         cs.gameObject.SetActive(false);
-
+        diac.allDialogsDone = false;
         if (!dialogueRunning)
         {
             // enter pre dialog code here
@@ -60,7 +60,6 @@ public class Part2Dialog : MonoBehaviour
         }
         if (nextTime > 0 && Time.time > nextTime)
         {
-            cs.gameObject.SetActive(false);
             CodeFinished = true;
 
         }

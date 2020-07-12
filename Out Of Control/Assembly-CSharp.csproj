@@ -40,6 +40,8 @@
      <Compile Include="Assets\Scripts\CarSpawner.cs" />
      <Compile Include="Assets\Scripts\DialogueParts\Part1Dialog.cs" />
      <Compile Include="Assets\Scripts\DialogueParts\Part2Dialog.cs" />
+     <Compile Include="Assets\Scripts\DialogueParts\Part3Dialog.cs" />
+     <Compile Include="Assets\Scripts\DialogueParts\Part4Dialog.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\Dialogue.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialogueController.cs" />
      <Compile Include="Assets\Scripts\DogController.cs" />

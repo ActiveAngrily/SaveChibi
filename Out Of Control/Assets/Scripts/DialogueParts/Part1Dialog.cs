@@ -18,6 +18,8 @@ public class Part1Dialog : MonoBehaviour
     float nextTime = 0f;
     public float spawnerRuntime = 5f;
 
+
+
     void Awake()
     {
         diac = FindObjectOfType<DialogueController>();
@@ -25,6 +27,11 @@ public class Part1Dialog : MonoBehaviour
         dc = FindObjectOfType<DogController>();
         cs = FindObjectOfType<CarSpawner>();
 
+
+    }
+    void OnEnable()
+    {
+        cs.gameObject.SetActive(false);
 
         if (!dialogueRunning)
         {
@@ -34,7 +41,6 @@ public class Part1Dialog : MonoBehaviour
             dialogueRunning = true;
             cs.gameObject.SetActive(false);
         }
-
     }
     bool oneRun = false;
     void Update()
@@ -60,9 +66,8 @@ public class Part1Dialog : MonoBehaviour
         }
         if (nextTime > 0 && Time.time > nextTime)
         {
-            cs.gameObject.SetActive(false);
+            //cs.gameObject.SetActive(false);
             CodeFinished = true;
-
         }
     }
 }

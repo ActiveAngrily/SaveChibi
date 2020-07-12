@@ -239,7 +239,9 @@ public class GameMaster : MonoBehaviour
 
     public Part1Dialog p1D;
     public Part2Dialog p2D;
-
+    public Part3Dialog p3D;
+    public Part4Dialog p4D;
+    
     private void Start()
     {
         p1D.gameObject.SetActive(true);
@@ -258,6 +260,18 @@ public class GameMaster : MonoBehaviour
         if (p2D.CodeFinished)
         {
             p2D.gameObject.SetActive(false);
+
+            p3D.gameObject.SetActive(true);
+        }
+        if(p3D.CodeFinished)
+        {
+            p3D.gameObject.SetActive(false);
+            
+            p4D.gameObject.SetActive(true);
+        }
+        if(p4D.CodeFinished)
+        {
+            p4D.gameObject.SetActive(false);
         }
     }
 }
