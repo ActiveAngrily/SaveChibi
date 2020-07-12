@@ -8,10 +8,14 @@ public class GameMaster : MonoBehaviour
     DogController dc;
 
     public float p1waitTime = 5f;
+    public float p2waitTime = 5f;
 
     float nextTime = 0f;
-    
+
     public bool _p1 = false;
+    public bool _p2 = false;
+    public bool _p3 = false;
+    public bool _p4 = false;
 
     private void Start()
     {
@@ -23,21 +27,55 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
-        if(nextTime > 0  && Time.time >= nextTime)
+        if (p1doOnce)
         {
-            Debug.Log("Running Script");
-            cs.gameObject.SetActive(false);
-            _p1 = true;
-            nextTime = 0f;
-        }   
+            if (nextTime > 0 && Time.time >= nextTime)
+            {
+                Debug.Log("P1 - Before End");
+                cs.gameObject.SetActive(false);
+                _p1 = true;
+                nextTime = 0f;
+            }
+        }
+        if (p2doOnce)
+        {
+            if(nextTime > 0 && Time.time >= nextTime)
+            {
+                Debug.Log("P2 - Before End");
+                cs.gameObject.SetActive(false);
+                _p2 = true;
+                nextTime = 0f;
+            }
+        }
     }
-    public IEnumerator p1()
+
+    bool p1doOnce = false;
+    public void p1()
     {
+        Debug.Log("P1 - After Dialogs");
         dc.controlsOn = true;
         cs.gameObject.SetActive(true);
         //play animations
-        nextTime = Time.time + p1waitTime;
-        yield return null;
+        if (!p1doOnce)
+        {
+            nextTime = Time.time + p1waitTime;
+            p1doOnce = true;
+        }
+    }
+
+    bool p2doOnce = false;
+    public void p2()
+    {
+        Debug.Log("P2 - After Dialogs");
+        dc.controlsOn = true;
+        dc.randomizeDirection = true;
+        cs.gameObject.SetActive(true);
+
+        if (!p2doOnce)
+        {
+            nextTime = Time.time + p2waitTime;
+            p2doOnce = true;
+        }
     }
     /*
     Element 1 - Normal Controls

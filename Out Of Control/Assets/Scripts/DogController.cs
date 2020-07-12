@@ -36,6 +36,7 @@ public class DogController : MonoBehaviour
         if (randomizeDirection)
         {
             ShuffleDirection(directionIndex);
+            randomizeDirection = false;
         }
     }
 

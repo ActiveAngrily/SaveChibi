@@ -28,13 +28,13 @@ public class CarSpawner : MonoBehaviour
 
     private void SpawnCars()
     {
-        /*
+        
         var randomIndex = Random.Range(0, spawnPoints.Length);
         var spawnPoint = spawnPoints[randomIndex];
-        
+        car = cars[1];
         var carSpawn = Instantiate(car, spawnPoint.position, spawnPoint.rotation);
         carSpawn.GetComponent<DragAndDrop>().activated = canDragCarSpawn;
-        */
+       /*
         List<int> numbersUsed = new List<int>();
         for (int i = 0; i < numberOfCarstoSpawnRate; i++)
         {
@@ -72,7 +72,7 @@ public class CarSpawner : MonoBehaviour
             
             var carSpawn = Instantiate(car, spawnPoint.position, spawnPoint.rotation);
             carSpawn.GetComponent<DragAndDrop>().activated = canDragCarSpawn;
-        }
+        }*/
     }
 
     public void CarDragOn()

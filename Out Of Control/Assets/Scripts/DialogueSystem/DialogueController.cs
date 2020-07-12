@@ -22,16 +22,23 @@ public class DialogueController : MonoBehaviour
     public Dialogue pt3;
     public Dialogue pt4;
 
+    int partRunning = 0;
+    bool p1 = false;
+    bool p2 = false;
+    bool p3 = false;
+    bool p4 = false;
 
     void Start()
     {
         gm = FindObjectOfType<GameMaster>();
         sentences = new Queue<string>();
         StartDialogue(pt1);
+        partRunning = 1;
     }
 
     private void Update()
     {
+        p1 = gm._p1;
         if (Time.time >= nextTime)
         {
             NextSentence();
@@ -39,15 +46,34 @@ public class DialogueController : MonoBehaviour
         }
         if (allDialogsDone)
         {
-            Debug.Log("Got Here");
-            StartCoroutine(gm.p1());
-
-            bool p1 = gm._p1;
-
-            if (p1)
+            switch (partRunning)
             {
-                // start p2
-                StartDialogue(pt2);
+                case 1:
+                    Debug.Log("P1 - Dialogs Done");
+                    gm.p1();
+
+                    if (p1)
+                    {
+                        Debug.Log("P1 - End");
+
+                        // start p2
+                        StartDialogue(pt2);
+                        partRunning = 2;
+                    }
+                    
+                    break;
+                case 2:
+                    Debug.Log("P2 - Dialogs Done");
+                    gm.p2();
+                    if (p2)
+                    {
+
+                    }
+                    break;
+                case 3:
+                    break;
+                case 4:
+                    break;
             }
 
             allDialogsDone = !allDialogsDone;
@@ -58,10 +84,11 @@ public class DialogueController : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogues)
     {
+        Debug.Log("Dialog Running - " + dialogues.name);
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
+        foreach (string sentence in dialogues.sentences)
         {
             sentences.Enqueue(sentence);
         }
