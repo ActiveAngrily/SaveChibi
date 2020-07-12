@@ -17,7 +17,7 @@ public class Part1Dialog : MonoBehaviour
 
     float nextTime = 0f;
     public float spawnerRuntime = 5f;
-    
+
     void Awake()
     {
         diac = FindObjectOfType<DialogueController>();
