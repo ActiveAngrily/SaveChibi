@@ -41,7 +41,10 @@ public class DogController : MonoBehaviour
 
         }
     }
-
+    public void CancelAllMotion()
+    {
+        rb.velocity = Vector2.zero;
+    }
     private void Movement()
     {
         if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
@@ -83,6 +86,12 @@ public class DogController : MonoBehaviour
         if (direction == Vector2.down) Animate("WalkDown");
         if (direction == Vector2.right) Animate("WalkRight");
         if (direction == Vector2.left) Animate("WalkLeft");
+        if (rb.velocity == Vector2.zero)
+        {
+            RemoveAnims(); 
+            an.Play("dog_idle");
+            direction = Vector2.zero;
+        }
     }
 
     private void Animate(string animParam)

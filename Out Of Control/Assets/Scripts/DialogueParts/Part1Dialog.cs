@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Part1Dialog : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Part1Dialog : MonoBehaviour
 
     DogController dc;
     CarSpawner cs;
+    Text devText;
 
     public bool dialogueRunning = false;
     public bool dialogueFinished = false;
@@ -18,7 +20,11 @@ public class Part1Dialog : MonoBehaviour
     float nextTime = 0f;
     public float spawnerRuntime = 5f;
 
+    float nextTime2 = 0f;
+    public float infoBarWaitTime = 5f;
 
+    float nextTime3 = 0f;
+    public float waitTime = 2f;
 
     void Awake()
     {
@@ -26,7 +32,8 @@ public class Part1Dialog : MonoBehaviour
         d = GetComponent<Dialogue>();
         dc = FindObjectOfType<DogController>();
         cs = FindObjectOfType<CarSpawner>();
-
+        devText = FindObjectOfType<Text>();
+        dc.CancelAllMotion();
 
     }
     void OnEnable()
@@ -50,24 +57,42 @@ public class Part1Dialog : MonoBehaviour
             if (!oneRun)
             {
                 dialogueFinished = true;
+                nextTime2 = Time.time + infoBarWaitTime;
+                nextTime3 = Time.time + infoBarWaitTime + waitTime;
                 oneRun = true;
             }
         }
-        if (dialogueFinished)
+        if (Time.time > nextTime2)
         {
-            // enter post dialogue code here
-            dc.controlsOn = true;
 
-            cs.gameObject.SetActive(true);
-            nextTime = Time.time + spawnerRuntime;
+            StartCoroutine(showInfoBar());
+            if (Time.time > nextTime3)
+            {
+                if (dialogueFinished)
+                {
+                    // enter post dialogue code here
+                    dc.controlsOn = true;
 
-            // end post dialog code
-            dialogueFinished = false;
+                    cs.gameObject.SetActive(true);
+                    nextTime = Time.time + spawnerRuntime;
+
+                    // end post dialog code
+                    dialogueFinished = false;
+                }
+
+                if (nextTime > 0 && Time.time > nextTime)
+                {
+                    //cs.gameObject.SetActive(false);
+                    CodeFinished = true;
+                    devText.text = "";
+                }
+            }
         }
-        if (nextTime > 0 && Time.time > nextTime)
-        {
-            //cs.gameObject.SetActive(false);
-            CodeFinished = true;
-        }
+    }
+    private IEnumerator showInfoBar()
+    {
+        // Show info bar
+        Debug.Log("Show Information Bar");
+        yield return null;
     }
 }

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -5681807933201384347}
   - component: {fileID: -2410497837489207443}
   m_Layer: 0
-  m_Name: PlaceholderCar
+  m_Name: Car 2
   m_TagString: Car
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,4 +130,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c693c90d11dbe43bb47d3084f74aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 0
+  activated: 1

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Part3Dialog : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class Part3Dialog : MonoBehaviour
     DogController dc;
     CarSpawner cs;
     DragAndDrop dad;
+    Text devText;
 
     public bool dialogueRunning = false;
     public bool dialogueFinished = false;
@@ -18,6 +20,8 @@ public class Part3Dialog : MonoBehaviour
 
     float nextTime = 0f;
     public float spawnerRuntime = 5f;
+    public float waitStartTime = 7f;
+    float nextTime2 = 0f;
 
     void Awake()
     {
@@ -27,9 +31,9 @@ public class Part3Dialog : MonoBehaviour
         cs = FindObjectOfType<CarSpawner>();
         dad = player.GetComponent<DragAndDrop>();
         cs.gameObject.SetActive(false);
-        
+        devText = FindObjectOfType<Text>();
         diac.allDialogsDone = false;
-        
+        dc.CancelAllMotion();
         if (!dialogueRunning)
         {
             // enter pre dialog code here
@@ -47,23 +51,30 @@ public class Part3Dialog : MonoBehaviour
             if (!oneRun)
             {
                 dialogueFinished = true;
+                nextTime2 = Time.time + waitStartTime;
                 oneRun = true;
             }
         }
-        if (dialogueFinished)
-        {
-            // enter post dialogue code here
-            dc.controlsOn = false;
-            dad.activated = true;
-            cs.gameObject.SetActive(true);
-            nextTime = Time.time + spawnerRuntime;
 
-            // end post dialog code
-            dialogueFinished = false;
+        if (nextTime2 <= Time.time)
+        {
+            //-------------------------Then show information bar.
+            // Wait a few seconds.
+            if (dialogueFinished)
+            {
+                // enter post dialogue code here
+                dc.controlsOn = false;
+                dad.activated = true;
+                cs.gameObject.SetActive(true);
+                nextTime = Time.time + spawnerRuntime;
+                // end post dialog code
+                dialogueFinished = false;
+            }
         }
         if (nextTime > 0 && Time.time > nextTime)
         {
             CodeFinished = true;
+            devText.text = "";
         }
     }
 }

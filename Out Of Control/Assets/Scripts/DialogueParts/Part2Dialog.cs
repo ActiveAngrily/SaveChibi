@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Part2Dialog : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class Part2Dialog : MonoBehaviour
 
     DogController dc;
     CarSpawner cs;
+
+    Text devText;
 
     public bool dialogueRunning = false;
     public bool dialogueFinished = false;
@@ -24,7 +27,8 @@ public class Part2Dialog : MonoBehaviour
         d = GetComponent<Dialogue>();
         dc = FindObjectOfType<DogController>();
         cs = FindObjectOfType<CarSpawner>();
-
+        devText = FindObjectOfType<Text>();
+        dc.CancelAllMotion();
         cs.gameObject.SetActive(false);
         diac.allDialogsDone = false;
         if (!dialogueRunning)
@@ -35,6 +39,7 @@ public class Part2Dialog : MonoBehaviour
             dialogueRunning = true;
             cs.gameObject.SetActive(false);
         }
+
     }
     bool oneRun = false;
     void Update()
@@ -61,7 +66,7 @@ public class Part2Dialog : MonoBehaviour
         if (nextTime > 0 && Time.time > nextTime)
         {
             CodeFinished = true;
-
+            devText.text = "";
         }
     }
 }

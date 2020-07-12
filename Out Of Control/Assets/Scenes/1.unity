@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74c693c90d11dbe43bb47d3084f74aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activated: 0
+  activated: 1
 --- !u!95 &578636991
 Animator:
   serializedVersion: 3
@@ -1336,6 +1336,7 @@ MonoBehaviour:
   dialogueFinished: 0
   CodeFinished: 0
   spawnerRuntime: 5
+  waitStartTime: 10
 --- !u!1 &862245434
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,6 +2447,8 @@ MonoBehaviour:
   dialogueFinished: 0
   CodeFinished: 0
   spawnerRuntime: 5
+  infoBarWaitTime: 5
+  waitTime: 2
 --- !u!1 &1851758860
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,6 +19,21 @@ public class DragAndDrop : MonoBehaviour
 
     private void Update() 
     {
+        if(Input.GetMouseButtonDown(0))
+        {
+            if(activated)
+            {
+                isDragging = true;
+            }
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            if(activated)
+            {
+                isDragging = false;
+            }
+        }
+
         Dragging();
     }
 
