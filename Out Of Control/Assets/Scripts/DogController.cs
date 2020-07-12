@@ -30,6 +30,7 @@ public class DogController : MonoBehaviour
 
     private void Update()
     {
+
         if (controlsOn)
         {
             Movement();
@@ -88,7 +89,7 @@ public class DogController : MonoBehaviour
         if (direction == Vector2.left) Animate("WalkLeft");
         if (rb.velocity == Vector2.zero)
         {
-            RemoveAnims(); 
+            RemoveAnims();
             an.Play("dog_idle");
             direction = Vector2.zero;
         }

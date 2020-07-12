@@ -12,6 +12,7 @@ public class Part1Dialog : MonoBehaviour
     DogController dc;
     CarSpawner cs;
     Text devText;
+    controlBar ctrl;
 
     public bool dialogueRunning = false;
     public bool dialogueFinished = false;
@@ -21,7 +22,7 @@ public class Part1Dialog : MonoBehaviour
     public float spawnerRuntime = 5f;
 
     float nextTime2 = 0f;
-    public float infoBarWaitTime = 5f;
+    public float infoBarWaitTime = 1.5f;
 
     float nextTime3 = 0f;
     public float waitTime = 2f;
@@ -33,7 +34,8 @@ public class Part1Dialog : MonoBehaviour
         dc = FindObjectOfType<DogController>();
         cs = FindObjectOfType<CarSpawner>();
         devText = FindObjectOfType<Text>();
-        dc.CancelAllMotion();
+        //   dc.CancelAllMotion();
+        ctrl = FindObjectOfType<controlBar>();
 
     }
     void OnEnable()
@@ -62,13 +64,13 @@ public class Part1Dialog : MonoBehaviour
                 oneRun = true;
             }
         }
-        if (Time.time > nextTime2)
+        if (dialogueFinished)
         {
-
-            StartCoroutine(showInfoBar());
-            if (Time.time > nextTime3)
+            if (Time.time > nextTime2)
             {
-                if (dialogueFinished)
+                showInfoBar();
+                Debug.Log("SHowing");
+                if (Time.time > nextTime3)
                 {
                     // enter post dialogue code here
                     dc.controlsOn = true;
@@ -78,21 +80,21 @@ public class Part1Dialog : MonoBehaviour
 
                     // end post dialog code
                     dialogueFinished = false;
-                }
 
-                if (nextTime > 0 && Time.time > nextTime)
-                {
-                    //cs.gameObject.SetActive(false);
-                    CodeFinished = true;
-                    devText.text = "";
                 }
             }
         }
+        if (nextTime > 0 && Time.time > nextTime)
+        {
+            //cs.gameObject.SetActive(false);
+            CodeFinished = true;
+            devText.text = "";
+        }
     }
-    private IEnumerator showInfoBar()
+    private void showInfoBar()
     {
         // Show info bar
+        ctrl.WASD();
         Debug.Log("Show Information Bar");
-        yield return null;
     }
 }
