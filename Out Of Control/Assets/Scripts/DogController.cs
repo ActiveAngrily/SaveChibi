@@ -11,14 +11,15 @@ public class DogController : MonoBehaviour
     // order of direction - [UP,DOWN,LEFT,RIGHT]
     private int[] directionIndex = { 0, 1, 2, 3 };
     public float speed;
-    
-    [Range(2f,1f)]
+
+    [Range(2f, 1f)]
     public float smoothStartMotion = 1.5f; //Making it lower will make it smoother
 
     //private UIText _uiText;
     //[SerializeField] private Transform startTransform;
 
     public bool randomizeDirection = false;
+    public bool controlsOn = false;
 
     private void Start()
     {
@@ -29,10 +30,15 @@ public class DogController : MonoBehaviour
 
     private void Update()
     {
-        Movement();
-        if(randomizeDirection)
+        if (controlsOn)
+        {
+            Movement();
+        }
+        if (randomizeDirection)
         {
             ShuffleDirection(directionIndex);
+            randomizeDirection = false;
+
         }
     }
 
@@ -79,12 +85,14 @@ public class DogController : MonoBehaviour
         if (direction == Vector2.left) Animate("WalkLeft");
     }
 
-    private void Animate(string animParam) {
+    private void Animate(string animParam)
+    {
         RemoveAnims();
         an.SetBool(animParam, true);
     }
 
-    private void RemoveAnims() {
+    private void RemoveAnims()
+    {
         an.SetBool("WalkUp", false);
         an.SetBool("WalkDown", false);
         an.SetBool("WalkLeft", false);
@@ -105,7 +113,7 @@ public class DogController : MonoBehaviour
     }
     private void OnColliderEnter2D(Collider col)
     {
-        if(col.gameObject.tag == "Car")
+        if (col.gameObject.tag == "Car")
         {
             Destroy(gameObject);
             Debug.Log("You Lose");

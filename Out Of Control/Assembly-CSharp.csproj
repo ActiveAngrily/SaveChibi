@@ -38,6 +38,8 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CarController.cs" />
      <Compile Include="Assets\Scripts\CarSpawner.cs" />
+     <Compile Include="Assets\Scripts\DialogueParts\Part1Dialog.cs" />
+     <Compile Include="Assets\Scripts\DialogueParts\Part2Dialog.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\Dialogue.cs" />
      <Compile Include="Assets\Scripts\DialogueSystem\DialogueController.cs" />
      <Compile Include="Assets\Scripts\DogController.cs" />
@@ -594,6 +596,9 @@
     <Reference Include="Unity.Timeline.Editor">
         <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Animation.Runtime">
         <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll</HintPath>
     </Reference>
@@ -657,6 +662,9 @@
     <Reference Include="Unity.2D.Animation.Editor">
         <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/Unity.2D.Animation.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Mathematics.Editor">
         <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
@@ -671,12 +679,6 @@
     </Reference>
     <Reference Include="UnityEditor.UI">
         <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Cinemachine">
-        <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
-    </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-        <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

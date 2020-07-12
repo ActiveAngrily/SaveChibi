@@ -4,11 +4,14 @@ using System.Collections;
 
 public class GameMaster : MonoBehaviour
 {
+    /*
     CarSpawner cs;
     DogController dc;
 
     public float p1waitTime = 5f;
     public float p2waitTime = 5f;
+    public float p3waitTime = 5f;
+    public float p4waitTime = 5f;
 
     float nextTime = 0f;
 
@@ -35,17 +38,19 @@ public class GameMaster : MonoBehaviour
                 cs.gameObject.SetActive(false);
                 _p1 = true;
                 nextTime = 0f;
+
+                p1doOnce = false;
             }
         }
         if (p2doOnce)
         {
-            Debug.Log("P2 Do Once is True");
             if (nextTime > 0 && Time.time >= nextTime)
             {
                 Debug.Log("P2 - Before End");
                 cs.gameObject.SetActive(false);
                 _p2 = true;
                 nextTime = 0f;
+                p2doOnce = false;
             }
         }
     }
@@ -79,6 +84,24 @@ public class GameMaster : MonoBehaviour
             p2doOnce = true;
         }
     }
+
+    bool p3doOnce = false;
+    public void p3()
+    {
+        Debug.Log("P3 - After Dialog");
+        dc.controlsOn = true;
+
+        cs.gameObject.SetActive(true);
+
+        if (!p3doOnce)
+        {
+            Debug.Log("P3 - Doing Once");
+            nextTime = Time.time + p3waitTime;
+            p3doOnce = true;
+        }
+
+    }
+
     /*
     Element 1 - Normal Controls
     Element 2 - Randomized Controls
@@ -213,4 +236,17 @@ public class GameMaster : MonoBehaviour
             }
         }
     }*/
+
+    public Part1Dialog p1D;
+    public Part2Dialog p2D;
+    
+    private void Update()
+    {
+        p1D.gameObject.SetActive(true);
+        if(p1D.CodeFinished)
+        {
+            p1D.gameObject.SetActive(false);
+        }
+    }
+
 }

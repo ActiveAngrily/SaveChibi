@@ -16,38 +16,42 @@ public class DialogueController : MonoBehaviour
     public float waitTime = 5f;
     public bool allDialogsDone = false;
 
-    public Dialogue dialogue;
-    public Dialogue pt1;
-    public Dialogue pt2;
-    public Dialogue pt3;
-    public Dialogue pt4;
+    /*
+        public Dialogue dialogue;
+        public Dialogue pt1;
+        public Dialogue pt2;
+        public Dialogue pt3;
+        public Dialogue pt4;
 
-    public int partRunning = 0;
-    bool p1 = false;
-    bool p2 = false;
-    bool p3 = false;
-    bool p4 = false;
+        public int partRunning = 0;
+        bool p1 = false;
+        bool p2 = false;
+        bool p3 = false;
+        bool p4 = false;
+    */
 
     void Start()
     {
         gm = FindObjectOfType<GameMaster>();
         sentences = new Queue<string>();
-        StartDialogue(pt1);
-        partRunning = 1;
+        /* StartDialogue(pt1);
+         partRunning = 1;*/
     }
 
     private void Update()
     {
-        p1 = gm._p1;
-        p2 = gm._p2;
-        p3 = gm._p3;
-        p4 = gm._p4;
-
         if (Time.time >= nextTime)
         {
             NextSentence();
             nextTime = Time.time + waitTime;
         }
+        /*
+        p1 = gm._p1;
+        p2 = gm._p2;
+        p3 = gm._p3;
+        p4 = gm._p4;
+
+
         if (allDialogsDone)
         {
             switch (partRunning)
@@ -79,6 +83,16 @@ public class DialogueController : MonoBehaviour
                     }
                     break;
                 case 3:
+                    Debug.Log("P3 - Dialogs Done");
+                    gm.p3();
+                    if(p3)
+                    {
+                        Debug.Log("P3 - End");
+
+                        //startDialogue
+                        StartDialogue(pt4);
+                        partRunning = 4;
+                    }
                     break;
                 case 4:
                     break;
@@ -86,6 +100,8 @@ public class DialogueController : MonoBehaviour
 
             allDialogsDone = !allDialogsDone;
         }
+        */
+
     }
 
 
