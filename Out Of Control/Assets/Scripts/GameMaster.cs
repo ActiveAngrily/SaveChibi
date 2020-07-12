@@ -39,7 +39,8 @@ public class GameMaster : MonoBehaviour
         }
         if (p2doOnce)
         {
-            if(nextTime > 0 && Time.time >= nextTime)
+            Debug.Log("P2 Do Once is True");
+            if (nextTime > 0 && Time.time >= nextTime)
             {
                 Debug.Log("P2 - Before End");
                 cs.gameObject.SetActive(false);
@@ -63,7 +64,7 @@ public class GameMaster : MonoBehaviour
         }
     }
 
-    bool p2doOnce = false;
+    public bool p2doOnce = false;
     public void p2()
     {
         Debug.Log("P2 - After Dialogs");
@@ -73,6 +74,7 @@ public class GameMaster : MonoBehaviour
 
         if (!p2doOnce)
         {
+            Debug.Log("P2 - Doing Once");
             nextTime = Time.time + p2waitTime;
             p2doOnce = true;
         }

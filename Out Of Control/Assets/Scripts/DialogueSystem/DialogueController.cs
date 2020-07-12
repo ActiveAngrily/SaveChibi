@@ -22,7 +22,7 @@ public class DialogueController : MonoBehaviour
     public Dialogue pt3;
     public Dialogue pt4;
 
-    int partRunning = 0;
+    public int partRunning = 0;
     bool p1 = false;
     bool p2 = false;
     bool p3 = false;
@@ -39,6 +39,10 @@ public class DialogueController : MonoBehaviour
     private void Update()
     {
         p1 = gm._p1;
+        p2 = gm._p2;
+        p3 = gm._p3;
+        p4 = gm._p4;
+
         if (Time.time >= nextTime)
         {
             NextSentence();
@@ -60,14 +64,18 @@ public class DialogueController : MonoBehaviour
                         StartDialogue(pt2);
                         partRunning = 2;
                     }
-                    
+
                     break;
                 case 2:
                     Debug.Log("P2 - Dialogs Done");
                     gm.p2();
                     if (p2)
                     {
+                        Debug.Log("P2 - End");
 
+                        //startDialogue
+                        StartDialogue(pt3);
+                        partRunning = 3;
                     }
                     break;
                 case 3:
