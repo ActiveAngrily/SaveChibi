@@ -672,6 +672,12 @@
     <Reference Include="UnityEditor.UI">
         <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
+    <Reference Include="Cinemachine">
+        <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
+    </Reference>
+    <Reference Include="com.unity.cinemachine.editor">
+        <HintPath>C:/Users/jamua/Documents/GitHub/GameJam/Out Of Control/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

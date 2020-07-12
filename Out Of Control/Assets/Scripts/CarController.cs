@@ -28,6 +28,6 @@ public class CarController : MonoBehaviour
     {
         rb.MovePosition(rb.position + _direction * (speed * Time.deltaTime));
         if (transform.position.x < -10 || transform.position.x > 10)
-            Destroy(gameObject);
+            Destroy(gameObject,2f);
     }
 }
