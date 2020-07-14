@@ -95,18 +95,19 @@ public class DogController : MonoBehaviour
         }
     }
 
-    private void Animate(string animParam)
+    public void Animate(string animParam)
     {
         RemoveAnims();
         an.SetBool(animParam, true);
     }
 
-    private void RemoveAnims()
+    public void RemoveAnims()
     {
         an.SetBool("WalkUp", false);
         an.SetBool("WalkDown", false);
         an.SetBool("WalkLeft", false);
         an.SetBool("WalkRight", false);
+        an.SetBool("Drag", false);
     }
 
     public void ShuffleDirection<Obj>(Obj[] dir)
